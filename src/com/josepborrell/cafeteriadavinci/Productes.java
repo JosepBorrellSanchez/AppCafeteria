@@ -56,7 +56,7 @@ public class Productes extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.llista);
+		setContentView(R.layout.llistes);
 		oslist = new ArrayList<HashMap<String, String>>();
 		new JSONParse().execute();
 	}

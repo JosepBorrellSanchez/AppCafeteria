@@ -3,13 +3,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
-    android:background="@drawable/textura2" >
+    android:background="@drawable/gioconda" >
 	<!--  News Feed Button -->
+
     <Button
         android:id="@+id/btn_news_feed"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/ic_news"
-        android:text="Qui som?" />
+        android:text="Noticies" />
     
 	<!--  Friends Button -->
     <Button
@@ -26,24 +27,14 @@
         android:text="Productes" />
 	
     <!--  Places Button -->
+
     <Button
         android:id="@+id/btn_places"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/ic_places"
-        android:text="Llocs" />
+        android:text="Qui som?" />
 
-    <!--  Events Button -->
-    <Button
-        android:id="@+id/btn_events"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/ic_events_icon"
-        android:text="Events" />
+    <!--  Facebook Button -->
 
-    <!--  Photos Button -->
-    <Button
-        android:id="@+id/btn_photos"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/ic_photos_icon"
-        android:text="Fotos" />
 
 </com.josepborrell.cafeteriadavinci.DashboardLayout>

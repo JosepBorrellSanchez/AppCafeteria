@@ -1,28 +1,13 @@
 package com.josepborrell.cafeteriadavinci;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.app.Activity;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.view.Menu;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.josepborrell.cafeteriadavinci.llibreries.JSONParser;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
     
@@ -46,15 +31,23 @@ public class MainActivity extends Activity {
         // Dashboard Places button
         Button btn_places = (Button) findViewById(R.id.btn_places);
         
-        // Dashboard Events button
-        Button btn_events = (Button) findViewById(R.id.btn_events);
-        
-        // Dashboard Photos button
-        Button btn_photos = (Button) findViewById(R.id.btn_photos);
-        
+        ImageView face = (ImageView) findViewById(R.id.imageface);
+
         /**
          * Handling all button click events
          * */
+        
+        face.setOnClickListener(new View.OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				String uri = "fb://page/494871740634414";
+				Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri ));
+				startActivity(intent);
+			}
+        	
+        });
         
      // Listening to News Feed button click
         btn_newsfeed.setOnClickListener(new View.OnClickListener() {
@@ -89,18 +82,21 @@ public class MainActivity extends Activity {
 				startActivity(i);
 			}
 		});
-        /*
+        
         // Listening to Places button click
         btn_places.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View view) {
 				// Launching News Feed Screen
-				Intent i = new Intent(getApplicationContext(), MainActivity.class);
-				startActivity(i);
+				//Intent i = new Intent(getApplicationContext(), MainActivity.class);
+				//startActivity(i);
+				
+				
+				
 			}
 		});
-        
+        /*
         // Listening to Events button click
         btn_events.setOnClickListener(new View.OnClickListener() {
 			

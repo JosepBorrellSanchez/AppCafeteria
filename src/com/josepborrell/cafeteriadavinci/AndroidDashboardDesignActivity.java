@@ -27,13 +27,7 @@ public class AndroidDashboardDesignActivity extends Activity {
         
         // Dashboard Places button
         Button btn_places = (Button) findViewById(R.id.btn_places);
-        
-        // Dashboard Events button
-        Button btn_events = (Button) findViewById(R.id.btn_events);
-        
-        // Dashboard Photos button
-        Button btn_photos = (Button) findViewById(R.id.btn_photos);
-        
+
         /**
          * Handling all button click events
          * */

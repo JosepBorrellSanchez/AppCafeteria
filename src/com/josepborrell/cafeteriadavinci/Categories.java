@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,7 +41,7 @@ public class Categories extends Activity {
 	private static final String TAG_OS = "Categories";
 	private static final String TAG_VER = "name";
 	private static final String TAG_NAME = "description";
-	private static final String TAG_API = "slug";
+	private static final String TAG_API = "term_taxonomy_id";
 	
 	JSONArray android = null;
 	
@@ -48,7 +49,7 @@ public class Categories extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.llista);
+		setContentView(R.layout.llistes);
 		oslist = new ArrayList<HashMap<String, String>>();
 		new JSONParse().execute();
 	}
@@ -85,6 +86,7 @@ public class Categories extends Activity {
 
    		// Getting JSON from URL
    		JSONObject json = jParser.getJSONFromUrl(url);
+   		Log.i("xdd", url);
    		return json;
    	}
    	 @Override
@@ -121,9 +123,9 @@ public class Categories extends Activity {
    		        
    				
    				ListAdapter adapter = new SimpleAdapter(Categories.this, oslist,
-   						R.layout.list_v,
+   						R.layout.llistacategories,
    						new String[] { TAG_VER,TAG_NAME}, new int[] {
-   								R.id.vers,R.id.name});
+   								R.id.title,R.id.artist});
 
    				list.setAdapter(adapter);
    				list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -131,10 +133,11 @@ public class Categories extends Activity {
    		            @Override
    		            public void onItemClick(AdapterView<?> parent, View view,
    		                                    int position, long id) {
-   		            	Uri uri = Uri.parse("http://www.josepborrellweb.esy.es/wordpress/product-category/"+oslist.get(+position).get("slug"));
-   		            	Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+   		            	Intent intent = new Intent(getApplicationContext(), Productesfiltrats.class);
+   		            	intent.putExtra("term_taxonomy_id", oslist.get(+position).get("term_taxonomy_id"));
+   		            	Log.i("xdd", oslist.get(+position).get("term_taxonomy_id"));
    		            	startActivity(intent);
-   		                //Toast.makeText(Categories.this, "You Clicked at "+oslist.get(+position).get("slug"), Toast.LENGTH_SHORT).show();
+   		                
 
    		            }
    		        });
