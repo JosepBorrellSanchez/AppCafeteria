@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Cafeteria da vinci</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Cafeteria Da Vinci</string>
+    <string name="Productes">Cafeteria Da Vinci - Productes</string>
+    <string name="Categories">Cafeteria Da Vinci - Categories</string>
+    <string name="Producte">Cafeteria Da Vinci - Producte</string>
+    <string name="Productescat">Cafeteria Da Vinci - Filtre</string>
+    <string name="Onestem">Cafeteria Da Vinci - On estem</string>
+    <string name="action_settings">Preferències</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>

@@ -7,26 +7,28 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.josepborrell.cafeteriadavinci.llibreries.JSONParser;
 
-public class Categories extends Activity {
+@SuppressLint("NewApi")
+public class Categories extends ActionBarActivity {
 	ListView list;
 	TextView ver;
 	TextView name;
@@ -43,15 +45,29 @@ public class Categories extends Activity {
 	private static final String TAG_NAME = "description";
 	private static final String TAG_API = "term_taxonomy_id";
 	
-	JSONArray android = null;
+	JSONArray jsonandroid = null;
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.llistes);
+		getActionBar().setHomeButtonEnabled(true);
 		oslist = new ArrayList<HashMap<String, String>>();
 		new JSONParse().execute();
+		/*
+		ImageView imgFavorite = (ImageView) findViewById(R.id.actionbar);
+        imgFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });*/
+	}
+	@Override
+	public void onBackPressed() {
+		this.finish();
 	}
 
 	@Override
@@ -60,6 +76,23 @@ public class Categories extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.preferencies:
+            	Intent i = new Intent(getApplicationContext(),Settings.class);
+            	startActivity(i);
+                return true;
+            case android.R.id.home:
+                // ProjectsActivity is my 'home' activity
+            	finish();
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        }
+    
 	
 	private class JSONParse extends AsyncTask<String, String, JSONObject> {
    	 private ProgressDialog pDialog;
@@ -94,13 +127,13 @@ public class Categories extends Activity {
    		 pDialog.dismiss();
    		 try {
    				// Getting JSON Array from URL
-   				android = json.getJSONArray(TAG_OS);
-   				for(int i = 0; i < android.length(); i++){
-   				JSONObject c = android.getJSONObject(i);
+   				jsonandroid = json.getJSONArray(TAG_OS);
+   				for(int i = 0; i < jsonandroid.length(); i++){
+   				JSONObject c = jsonandroid.getJSONObject(i);
    				
    				// Storing  JSON item in a Variable
-   				String ver = "Nom : "+ c.getString(TAG_VER);
-   				String name = "Descripcio : "+c.getString(TAG_NAME);
+   				String ver = c.getString(TAG_VER);
+   				String name= c.getString(TAG_NAME);
    				String api = c.getString(TAG_API);
    				
    			
@@ -150,5 +183,4 @@ public class Categories extends Activity {
    		 
    	 }
    }
-
 }

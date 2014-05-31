@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@+id/menu_vista"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Canviar de vista"/>
+    
+    <item android:id="@+id/menu_3d"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Centrar al Da Vinci"/>
+
+</menu>

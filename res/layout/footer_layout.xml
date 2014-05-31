@@ -3,14 +3,17 @@
 
     <ImageView
         android:id="@+id/imageface"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
         android:src="@drawable/ic_fb" />
 
-	<TextView android:text="www.davinciroquetes.com"
-	    	android:layout_width="fill_parent"
-	    	android:layout_height="wrap_content"
-	    	android:textColor="#606060"
-	    	android:gravity="center"
-	    	android:paddingTop="10dip"/>
+    <TextView
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dip"
+        android:layout_centerHorizontal="true"
+        android:text="www.davinciroquetes.com"
+        android:textColor="#606060" />
+
 </LinearLayout>

@@ -1,40 +1,46 @@
-<com.josepborrell.cafeteriadavinci.DashboardLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/principal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
     android:background="@drawable/gioconda" >
+
 	<!--  News Feed Button -->
+    
+	<!--  Friends Button -->
+    
+	<!--  Messages Button -->
+	
+    <!--  Places Button -->
+
+    <!--  Facebook Button -->
 
     <Button
         android:id="@+id/btn_news_feed"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/ic_news"
-        android:text="Noticies" />
-    
-	<!--  Friends Button -->
-    <Button
-        android:id="@+id/btn_friends"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/ic_friends"
-        android:text="Categories" />
-    
-	<!--  Messages Button -->
-    <Button
-        android:id="@+id/btn_messages"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/ic_messages"
-        android:text="Productes" />
-	
-    <!--  Places Button -->
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/btn_places"
+        android:drawableTop="@drawable/ic_info"
+        android:text="Contacte / Informació" />
 
     <Button
         android:id="@+id/btn_places"
         style="@style/DashboardButton"
+        android:layout_alignBaseline="@+id/btn_news_feed"
+        android:layout_alignBottom="@+id/btn_news_feed"
+        android:layout_centerHorizontal="true"
         android:drawableTop="@drawable/ic_places"
-        android:text="Qui som?" />
+        android:text="On estem?" />
 
-    <!--  Facebook Button -->
+    <Button
+        android:id="@+id/btn_messages"
+        style="@style/DashboardButton"
+        android:layout_alignBaseline="@+id/btn_places"
+        android:layout_alignBottom="@+id/btn_places"
+        android:layout_marginRight="26dp"
+        android:layout_toLeftOf="@+id/btn_places"
+        android:drawableTop="@drawable/ic_cafe"
+        android:text="Productes" />
 
-
-</com.josepborrell.cafeteriadavinci.DashboardLayout>
+</RelativeLayout>

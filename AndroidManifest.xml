@@ -3,53 +3,99 @@
     package="com.josepborrell.cafeteriadavinci"
     android:versionCode="1"
     android:versionName="1.0" >
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<!-- GCM connects to Google Services. -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<!-- GCM requires a Google account. -->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+ 
+	<permission android:name="com.josepborrell.cafeteriadavinci.permission.C2D_MESSAGE"
+    	android:protectionLevel="signature" />
+	<uses-permission android:name="com.josepborrell.cafeteriadavinci.permission.C2D_MESSAGE" />
+     
+<!-- This app has permission to register and receive data message. -->
+<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="19" />
+    
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:name="com.josepborrell.cafeteriadavinci.MyApplication"
+        android:icon="@drawable/ic_cafe"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.AppCompat" >
         <activity
             android:name="MainActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:screenOrientation="portrait"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="Quisom"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:label="@string/app_name" >
-            </activity>
-            <activity
-            android:name="Categories"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:label="@string/app_name" >
-        </activity>
+            <intent-filter>
+   			 <action android:name="com.josepborrell.cafeteriadavinci.MESSAGE" />
+    			<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        	</activity>
+        	<activity
+            	android:name="Onestem"
+            	android:label="@string/Onestem" >
+            	<!--  android:theme="@android:style/Theme.NoTitleBar"-->
+           	 </activity>
+            	<activity
+            	android:name="Categories"
+            	android:label="@string/Categories" >
+        	</activity>
         <activity
             android:name="Productes"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:label="@string/Productes">
         </activity>
         <activity
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:name="Producte">
+            android:name="Producte"
+            android:screenOrientation="portrait"
+            android:label="@string/Producte">
         </activity>
         <activity
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:name="Productesfiltrats">
+            android:name="Settings"
+            android:label="@string/action_settings"
+            >
         </activity>
+        <activity
+            android:name="Productesfiltrats"
+            android:label="@string/Productescat">
+        </activity>
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+               android:value="AIzaSyDtQJFbvBQMScU1zOOeVcENCcr4LgJ2ZnY"/>
+        <meta-data android:name="com.google.android.gms.version"
+      android:value="@integer/google_play_services_version" />
         
+        <activity android:name="com.pushbots.push.PBMsg"/>
+<activity android:name="com.pushbots.push.PBListener"/>
+<receiver
+android:name="com.google.android.gcm.GCMBroadcastReceiver"
+android:permission="com.google.android.c2dm.permission.SEND" >
+    <intent-filter>
+        <!-- Receives the actual messages. -->
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <!-- Receives the registration id. -->
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <category android:name="com.josepborrell.cafeteriadavinci" />
+    </intent-filter>
+</receiver>
+<receiver android:name="com.pushbots.push.MsgReceiver" />
+<service android:name="com.pushbots.push.GCMIntentService" />
+<service android:name="org.openudid.OpenUDID_service" >
+    <intent-filter>
+        <action android:name="org.openudid.GETUDID" />
+    </intent-filter>
+</service>
 
     </application>
     

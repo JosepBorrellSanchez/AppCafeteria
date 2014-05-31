@@ -1,7 +1,5 @@
 package com.josepborrell.cafeteriadavinci;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -9,30 +7,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.josepborrell.cafeteriadavinci.llibreries.HttpRequest;
-import com.josepborrell.cafeteriadavinci.llibreries.HttpRequest.HttpRequestException;
 import com.josepborrell.cafeteriadavinci.llibreries.JSONParser;
 
-public class Productes extends Activity {
+public class Productes extends ActionBarActivity{
 	ListView list;
 	TextView ver;
 	TextView name;
@@ -50,23 +43,47 @@ public class Productes extends Activity {
 	private static final String TAG_LINK = "link";
 	private static final String TAG_FOTO = "foto";
 	
-	JSONArray android = null;
+	JSONArray jsonandroid = null;
 	
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.llistes);
+		getActionBar().setHomeButtonEnabled(true);
 		oslist = new ArrayList<HashMap<String, String>>();
 		new JSONParse().execute();
+		
+		
+	}
+	@Override
+	public void onBackPressed() {
+		this.finish();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	  @Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			// Inflate the menu; this adds items to the action bar if it is present.
+			getMenuInflater().inflate(R.menu.main, menu);
+			return true;
+		}
+	    
+	    public boolean onOptionsItemSelected(MenuItem item) {
+	        switch (item.getItemId()) {
+	            case R.id.preferencies:
+	            	Intent i = new Intent(getApplicationContext(),Settings.class);
+	            	startActivity(i);
+	                return true;
+	            case android.R.id.home:
+	                // ProjectsActivity is my 'home' activity
+	            	finish();
+	                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+	                return true;
+	            default:
+	                return super.onOptionsItemSelected(item);
+	        }
+	    }
 	
 	private class JSONParse extends AsyncTask<String, String, JSONObject> {
    	 private ProgressDialog pDialog;
@@ -101,16 +118,16 @@ public class Productes extends Activity {
    		 pDialog.dismiss();
    		 try {
    				// Getting JSON Array from URL
-   				android = json.getJSONArray(TAG_OS);
-   				for(int i = 0; i < android.length(); i++){
-   				JSONObject c = android.getJSONObject(i);
+   				jsonandroid = json.getJSONArray(TAG_OS);
+   				for(int i = 0; i < jsonandroid.length(); i++){
+   				JSONObject c = jsonandroid.getJSONObject(i);
    				
    				
    				
    				// Storing  JSON item in a Variable
-   				String ver = "Nom : "+c.getString(TAG_VER);
-   				String name = "Descripció : "+c.getString(TAG_NAME);
-   				String api = "Preu : "+c.getString(TAG_API);
+   				String ver = c.getString(TAG_VER);
+   				String name = c.getString(TAG_NAME);
+   				String api = c.getString(TAG_API);
    				String link = c.getString(TAG_LINK);
    				String foto = c.getString(TAG_FOTO);
    				
@@ -128,7 +145,7 @@ public class Productes extends Activity {
 
    				map.put(TAG_VER, ver);
    				map.put(TAG_NAME, name);
-   				map.put(TAG_API, api);
+   				map.put(TAG_API, api+"â‚¬");
    				map.put(TAG_LINK, link);
    				map.put(TAG_FOTO, foto);
    				//DownloadTask baixa = (DownloadTask) new DownloadTask().execute(foto);
@@ -165,7 +182,7 @@ public class Productes extends Activity {
 
    		 
    	 }
-   }
+   }/*
 	public class DownloadTask extends AsyncTask<String, Long, File> {
 		  protected File doInBackground(String... urls) {
 		    try {
@@ -203,9 +220,9 @@ public class Productes extends Activity {
 		    else{
 		      Log.d("MyApp", "Download failed");}
 		    
-		    
+		   
 		  }
-		  
+		  }
+		  }
+		  */
 	}
-
-}

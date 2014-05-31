@@ -28,7 +28,7 @@
         <item name="android:drawablePadding">2dp</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#ff29549f</item>
+        <item name="android:textColor">#AB642E</item>
         <item name="android:background">@null</item>
     </style>    
     
