@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
                 MainActivity.this, 
                 R.anim.bounce);
 
-animacion3.setStartTime(700);
+animacion3.setStartTime(500);
 animacion3.setDuration(4000);
 btn_newsfeed.startAnimation(animacion3);
         
@@ -72,7 +72,7 @@ btn_friends.startAnimation(animacion4);
                 MainActivity.this, 
                 R.anim.bounce);
 
-animacion1.setStartTime(700);
+animacion1.setStartTime(500);
 animacion1.setDuration(5000);
 btn_messages.startAnimation(animacion1);
         
@@ -82,7 +82,7 @@ btn_messages.startAnimation(animacion1);
                 MainActivity.this, 
                 R.anim.bounce);
 
-animacion2.setStartTime(700);
+animacion2.setStartTime(500);
 animacion2.setDuration(6000);
 btn_places.startAnimation(animacion2);
 

@@ -60,24 +60,24 @@ public class Producte extends ActionBarActivity  {
                 Producte.this, 
                 R.anim.bounce);
 
-animacion3.setStartTime(700);
-animacion3.setDuration(4000);
+animacion3.setStartTime(200);
+animacion3.setDuration(3000);
 nomproducte.startAnimation(animacion3);
 
 animacion1 = AnimationUtils.loadAnimation(
 		Producte.this, 
         R.anim.bounce);
 
-animacion1.setStartTime(700);
-animacion1.setDuration(5000);
+animacion1.setStartTime(200);
+animacion1.setDuration(4000);
 descproducte.startAnimation(animacion1);
 
 animacion2 = AnimationUtils.loadAnimation(
 		Producte.this, 
         R.anim.bounce);
 
-animacion2.setStartTime(700);
-animacion2.setDuration(6000);
+animacion2.setStartTime(200);
+animacion2.setDuration(5000);
 preuproducte.startAnimation(animacion2);
         
         Typeface miPropiaTypeFace = 

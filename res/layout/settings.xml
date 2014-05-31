@@ -3,9 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <!-- Include Action Bar -->
-    	<include layout="@layout/actionbar_layout"/>
 
     	<CheckBox
     	    android:id="@+id/checkBox1"
