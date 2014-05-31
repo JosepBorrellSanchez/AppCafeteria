@@ -335,9 +335,10 @@ int drawable ic_plusone_tall_off_client 0x7f020084
 int drawable ic_productes 0x7f020085
 int drawable image_bg 0x7f020086
 int drawable list_selector 0x7f020087
-int drawable powered_by_google_dark 0x7f020088
-int drawable powered_by_google_light 0x7f020089
-int drawable rounder_corner 0x7f02008a
+int drawable logo 0x7f020088
+int drawable powered_by_google_dark 0x7f020089
+int drawable powered_by_google_light 0x7f02008a
+int drawable rounder_corner 0x7f02008b
 int id action_bar 0x7f07002e
 int id action_bar_activity_content 0x7f070027
 int id action_bar_container 0x7f07002d

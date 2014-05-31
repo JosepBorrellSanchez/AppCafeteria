@@ -1380,9 +1380,10 @@ containing a value of this type.
         public static final int ic_productes=0x7f020085;
         public static final int image_bg=0x7f020086;
         public static final int list_selector=0x7f020087;
-        public static final int powered_by_google_dark=0x7f020088;
-        public static final int powered_by_google_light=0x7f020089;
-        public static final int rounder_corner=0x7f02008a;
+        public static final int logo=0x7f020088;
+        public static final int powered_by_google_dark=0x7f020089;
+        public static final int powered_by_google_light=0x7f02008a;
+        public static final int rounder_corner=0x7f02008b;
     }
     public static final class id {
         public static final int action_bar=0x7f07002e;
